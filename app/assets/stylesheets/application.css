@@ -71,6 +71,8 @@ html, body {
     background: rosybrown;
     margin: 1em 0;
     padding: 4px;
+    color: red;
+    text-align: center;
   }
   form label {
     display: block;

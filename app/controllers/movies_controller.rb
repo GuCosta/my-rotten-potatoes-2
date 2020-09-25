@@ -8,4 +8,17 @@ class MoviesController < ApplicationController
       @movie = Movie.find(id) # look up movie by unique ID
       # will render app/views/movies/show.html.haml by default
     end
+
+    def new
+      @movie = Movie.new
+      #default: render 'new' template
+    end
+
+    def create
+      params.require(:movie)
+      permitted = params[:movie].permit(:title,:rating,:release_date)
+      @movie = Movie.create!(permitted)
+      flash[:notice] = "#{@movie.title} was successfully created."
+      redirect_to movies_path
+    end
 end
